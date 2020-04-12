@@ -101,4 +101,40 @@ public class LinkedList {
         }
         System.out.println();
     }
+	
+	/** insert node nth position */
+	public void insertNthPosition(Node currentNode, int data, int position) {
+	    Node newNode = new Node(data);
+            newNode.data = data;
+//  	    Node current = head;  
+
+	    if( position == 0 ){
+		newNode.next = currentNode;
+// 		return newNode;
+	    }
+
+	    int counter = 0;
+	    while( ++counter < position ){
+		current = currentNode.next;
+	    }
+
+	    newNode.next = currentNode.next;   
+	    currentNode.next = newNode;   
+// 	    return head;
+	}
+	
+	/** delete node nth position */
+	Node Delete(Node head, int position) {
+	    Node temp=head;
+	    int pos=1;
+	    if(position==0)
+		return head.next;
+	    while(pos<position)
+	    {
+		head=head.next;
+		pos++;    
+	    }
+	    head.next=head.next.next;
+	    return temp;
+	}
 }
