@@ -213,6 +213,8 @@ class Solution {
         
         TreeNode nod = findParant(root.left, root, data);
         
+//         return (nod != null) ? nod : findParant(root.right, root, data);
+        
         if (nod != null)
             return nod; 
         
@@ -227,6 +229,8 @@ class Solution {
             return dpt;
         
         int level = findDepth(root.left, data, dpt + 1);
+        
+        //return (level != 0) ? level : findDepth(root.right, data, dpt + 1); 
         
         if (level != 0)
             return level;
