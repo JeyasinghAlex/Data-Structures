@@ -158,5 +158,85 @@ public class BinaryTree {
 
     /** AVL Tree */ // Balance Tree :-
     /** Red Black Tree */
+    
+    
+    
+    
+    
+    
+   /** Cousins in Binary Tree */
+    
+    
+    /**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    
+    public boolean isCousins(TreeNode root, int x, int y) {
+        
+        int first = findDepth(root, x, 1);
+        int second = findDepth(root, y, 1);
+        
+        if (first != second) 
+            return false;
+        
+        TreeNode node = findParant(root, root, x);
+        
+        if (node.left == null || node.right == null)
+            return true;
+        
+        if (node.left.val == x && node.right.val == y || node.left.val == y && node.right.val == x)
+            return false;
+        
+        return true;
+            
+    }
+    
+    private TreeNode findParant(TreeNode root, TreeNode parantNode, int data) {
+        if (root == null) 
+            return null;
+        
+        if (root.val == data) 
+            return parantNode;
+        
+        TreeNode nod = findParant(root.left, root, data);
+        
+//         return (nod != null) ? nod : findParant(root.right, root, data);
+        
+        if (nod != null)
+            return nod; 
+        
+        return findParant(root.right, root, data);
+    }
+    
+    private int findDepth(TreeNode root, int data, int dpt) {
+        if (root == null)
+            return 0;
+        
+        if (root.val == data)
+            return dpt;
+        
+        int level = findDepth(root.left, data, dpt + 1);
+        
+        //return (level != 0) ? level : findDepth(root.right, data, dpt + 1); 
+        
+        if (level != 0)
+            return level;
+        
+        return findDepth(root.right, data, dpt + 1);
+    }
+}
 
 }
