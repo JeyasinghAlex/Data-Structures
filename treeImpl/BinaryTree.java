@@ -155,6 +155,19 @@ public class BinaryTree {
         }
         return currentNode;
     }
+    
+    public void invertBinaryTree(Node currentNode) {
+        
+        if (currentNode == null) 
+            return;
+        
+        invertBinaryTree(currentNode.left);
+        invertBinaryTree(currentNode.right);
+        
+        Node temp = currentNode.left;
+        currentNode.left = currentNode.right;
+        currentNode.right = temp;
+    }
 
     /** AVL Tree */ // Balance Tree :-
     /** Red Black Tree */
